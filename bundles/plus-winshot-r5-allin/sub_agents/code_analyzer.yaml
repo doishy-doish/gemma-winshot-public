@@ -1,0 +1,12 @@
+# Read-only analyzer subagent (AC-proven shape; no vendored skills). Same base model per single-model rule.
+name: code_analyzer
+description: Read-only locator plus diff overspray reviewer. Never edits, writes, or submits.
+model: gemma-4-31b-it-qat-w4a16-ct
+instruction: !include ../prompts/analyzer.md
+tools:
+  - run_command
+  - read_file
+  - search_similar_code
+  - get_code_neighbors
+  - get_code_subgraph
+generate_content_config: !include ../configs/analyzer_sampling.yaml
