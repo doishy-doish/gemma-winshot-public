@@ -1,0 +1,12 @@
+# 0.17 AUTOPSY 2026-11-22 — why that one run hit (his own numbers convict it as a draw)
+Source: his ledger history/SUBMISSIONS.md (1 draw each) + evidence/*.json + account pages (scottweeden-profile/model/writeup/site HTML).
+Bio: Texas Tech grad researcher (verifiable AI agents + RL); projects kaggriculture-MuZero / RSNA-knee 0.941 blend / USD-scene LLM; site has NO gemma post — no hidden method there. Model page: "Rank-16 LoRA ... trained on its own resolved swegemma agent turns". Profile/writeup pages are JS shells (no embedded kernel list) — ledger + evidence are the only witnesses, and they are enough.
+
+1. The two runs differ by adapter ONLY: 23 Oct A1-6min+LoRA 0.17 (10/58) vs 24 Oct same-minus-adapter 0.12 (7/58). Both finished inside 12h (6-min cap). Delta = +3 tasks.
+2. Wilson 95%: 0.17 -> [0.096,0.289]; 0.12 -> [0.060,0.229]. OVERLAP. Two-prop z = 0.79, ns.
+3. His own harness noise is 1-2 tasks: A100 same-bundle different-seed 18/81 vs 17/81 (diff 1); train passes same-bundle 10/81 vs 12/81 (diff 2). LB diff 3 is one notch above his own noise — on ONE draw each.
+4. His own follow-ups convict it: 5 single changes on the adapter arch scored 0.15/0.15/0.15/0.13/0.12 (mean 0.14). 0.17 sits 1.7 tasks above its own arch mean. His words: "suggests the architecture's 0.17 was a favourable draw". V6 retrain on MORE data (115 vs 83 samples) scored LOWER (0.13) — anti-dose-response.
+5. Rich-fold paired (same 48, concurrency 2): A1 14/48 [0.182,0.432] vs graph-first 13/48 [0.166,0.410], paired +1/-2 net -1. Same family, no signal — his local rig shows the same flip.
+6. The "something he did" that mattered was NOT the adapter: it was the 6-MIN CAP from measured durations (8-min projects 12.4-14.2h = whole-submission error; 6-min fits; 7-min only if scorer 0.7x). 22 Oct 6-min bundle died in platform incident 751339 (byte-identical zips threw); 23 Oct finished. Control finished too. Cap = finisher; adapter = passenger.
+7. Mechanism check fails: loss 0.17->0.11 thin; max|dlogit| 18.3 (does something) but held-out tool agreement 0.990->0.985 = drift not quality; resolve-rate run PENDING (quota); ships WITHOUT adapter. Field: resubmit-same 0.17->0.15/0.13/0.15; byte-identical 0.10 vs 0.15.
+VERDICT: 0.17 = favourable draw on a finished run. Adopt NOTHING from it except the 6-min cap (already in our winshot) + GRAPH-line + A1 bundle. Adapter stays D11-vetoed until HIS paired rich-fold run lands.
